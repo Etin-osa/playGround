@@ -1,0 +1,40 @@
+{
+  "name": "playground",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack",
+    "start:dev": "webpack-dev-server"
+  },
+  "dependencies": {
+    "axios": "^0.26.0",
+    "bpmn-js": "8.7.2",
+    "bpmn-js-properties-panel": "0.44.1",
+    "camunda-bpmn-moddle": "6.1.2",
+    "jquery": "^3.6.0",
+    "min-dash": "^3.8.1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.17.5",
+    "@babel/plugin-transform-react-jsx": "^7.17.3",
+    "@babel/preset-env": "^7.16.11",
+    "babel-loader": "^8.2.3",
+    "copy-webpack-plugin": "^10.2.4",
+    "css-loader": "^6.6.0",
+    "file-loader": "^6.2.0",
+    "html-loader": "^3.1.0",
+    "html-webpack-plugin": "^5.5.0",
+    "mini-css-extract-plugin": "^2.5.3",
+    "node-sass": "^7.0.1",
+    "sass-loader": "^12.6.0",
+    "sirv-cli": "^2.0.2",
+    "style-loader": "^3.3.1",
+    "webpack": "^5.69.1",
+    "webpack-cli": "^4.9.2",
+    "webpack-dev-server": "^4.7.4"
+  }
+}

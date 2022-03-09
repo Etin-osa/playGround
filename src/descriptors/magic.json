@@ -1,0 +1,22 @@
+{
+  "name": "Magic",
+  "prefix": "magic",
+  "uri": "http://magic",
+  "xml": {
+    "tagAlias": "lowerCase"
+  },
+  "associations": [],
+  "types": [
+    {
+      "name": "BewitchedUserTask",
+      "extends": ["bpmn:UserTask"],
+      "properties": [
+        {
+          "name": "spell",
+          "isAttr": true,
+          "type": "String"
+        }
+      ]
+    }
+  ]
+}

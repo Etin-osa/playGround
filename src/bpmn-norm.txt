@@ -1,0 +1,154 @@
+import BpmnModeler from "bpmn-js/lib/Modeler";
+import customTranslate from "./customTranslate/customTranslate";
+// import lang from "./customTranslate/lang";
+import camundaModdlePackage from "camunda-bpmn-moddle/resources/camunda";
+import camundaModdleExtension from "camunda-bpmn-moddle/lib";
+import {
+  BpmnPropertiesPanelModule,
+  BpmnPropertiesProviderModule,
+  CamundaPlatformPropertiesProviderModule,
+  ElementTemplatesPropertiesProviderModule
+} from "bpmn-js-properties-panel";
+import magicPropertiesProviderModule from './provider/magic';
+import magicModdleDescriptor from './descriptors/magic';
+
+
+
+const customTranslateModule = {
+  translate: [ 'value', customTranslate ]
+}
+
+/* Styles */
+import "bpmn-js-properties-panel/dist/assets/properties-panel.css";
+import "bpmn-js-properties-panel/dist/assets/element-templates.css";
+
+import "bpmn-js/dist/assets/diagram-js.css";
+import "bpmn-js/dist/assets/bpmn-font/css/bpmn-embedded.css";
+import './styles/main.scss'
+
+const xml = `
+<?xml version="1.0" encoding="UTF-8"?>
+  <bpmn:definitions
+    xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL"
+    xmlns:cmmn="http://www.omg.org/spec/CMMN/20151109/MODEL"
+    xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+    xmlns:modeler="http://camunda.org/schema/modeler/1.0"
+    id="Definitions_0bfwl6a" targetNamespace="http://bpmn.io/schema/bpmn"
+    exporter="Camunda Modeler" exporterVersion="4.12.0"
+    modeler:executionPlatform="Camunda Platform"
+    modeler:executionPlatformVersion="7.15.0">
+      <bpmn:process id="Process_0w0hjid" isExecutable="true" />
+      <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+        <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_0w0hjid" />
+      </bpmndi:BPMNDiagram>
+  </bpmn:definitions>
+`
+
+
+
+
+const customTranslateModule = {
+  translate: [ 'value', customTranslate ]
+}
+
+const bpmnModeler = new BpmnModeler({
+  container: "#app",
+  keyboard: {
+    bindTo: document
+  },
+  additionalModules: [
+    customTranslateModule,
+    camundaModdleExtension,
+    BpmnPropertiesPanelModule,
+    BpmnPropertiesProviderModule,
+    CamundaPlatformPropertiesProviderModule,
+    ElementTemplatesPropertiesProviderModule,
+    magicPropertiesProviderModule
+  ],
+  propertiesPanel: {
+    parent: "#app-panel"
+  },
+  moddleExtensions: {
+    camunda: camundaModdlePackage,
+    magic: magicModdleDescriptor
+  },
+})
+
+async function openDiagram(xml) {
+  try {
+    const { warnings } = await bpmnModeler.importXML(xml);
+    bpmnModeler.get("canvas").zoom("fit-viewport");
+    console.log("success !" + warnings);
+  } catch (err) {
+    console.error(err);
+  }
+}
+
+
+
+// Get XML
+const colXml = document.getElementById('collect-xml');
+colXml.addEventListener('click', async () => {
+  try {
+    const { xml } = await bpmnModeler.saveXML({ format: true })
+    console.log(xml)
+  } catch (err) {
+    console.log(err)
+  }
+})
+
+openDiagram(xml);
+
+
+
+
+
+
+
+
+
+# package.json
+"@bpmn-io/properties-panel": "0.10.2",
+"bpmn-i18n-moddle": "^0.2.0",
+"bpmn-js": "9.0.0-alpha.2",
+"bpmn-js-properties-panel": "1.0.0-alpha.3",
+"camunda-bpmn-moddle": "5.0.0",
+"jquery": "^3.6.0",
+"min-dash": "^3.8.1"
+
+
+
+
+
+
+
+// window.updateFormField = function(elementID) {
+// 	var element = elementRegistry.get(elementID);
+
+// 	var extensionElements =	element.businessObject.get('extensionElements');
+
+// 	if (!extensionElements) {
+// 		extensionElements = bpmnModeler.create('bpmn:ExtensionElements');
+// 	}
+
+// 	var form = extensionElements.get('values').filter(function(elem) {
+// 		return elem.$type == 'camunda:FormData'}
+// 	)[0];
+
+// 	if (!form) {
+// 		form = bpmnModeler.create('camunda:FormData');
+// 	}
+
+// 	var formField = bpmnModeler.create('camunda:FormField', {'defaultValue': 'false', 'id': 'FormField_Test', 'label': 'Confirm?', 'type': 'boolean'});
+// 	var existingFieldsWithID = form.get('fields').filter(function(elem) {
+// 		return elem.id == formField.id;
+// 	});
+
+// 	for (var i = 0; i < existingFieldsWithID.length; i++) {
+// 		form.get('fields').splice(form.get('fields').indexOf(existingFieldsWithID[i]));
+// 	}
+// 	form.get('fields').push(formField);
+
+// 	extensionElements.get('values').push(form);
+// 	modeling.updateProperties(element, {extensionElements: extensionElements});
+// }
