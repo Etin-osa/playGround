@@ -1,8 +1,9 @@
-import Modeler from "bpmn-js/lib/Modeler";
-import camundaModdlePackage from "camunda-bpmn-moddle/resources/camunda";
-import camundaModdleExtension from "camunda-bpmn-moddle/lib";
-import PropertiesPanel from "bpmn-js-properties-panel";
-import propertiesProviderModule from "bpmn-js-properties-panel/lib/provider/camunda";
+import BpmnModeler from "bpmn-js/lib/Modeler";
+import {
+  BpmnPropertiesPanelModule,
+  BpmnPropertiesProviderModule
+} from "bpmn-js-properties-panel";
+
 
 // styles
 import "bpmn-js/dist/assets/diagram-js.css";
@@ -31,36 +32,24 @@ const xml = `
   </bpmn:definitions>
 `
 
-
-
-const modeler = new Modeler({
-  container: '#app',
-  keyboard: {
-    bindTo: document
-  },
+const bpmnModeler = new BpmnModeler({
+  container: "#app",
   propertiesPanel: {
     parent: "#app-panel"
   },
   additionalModules: [
-    camundaModdleExtension,
-    PropertiesPanel,
-    propertiesProviderModule,
-  ],
-  moddleExtensions: {
-    camunda: camundaModdlePackage,
-  }
+    BpmnPropertiesPanelModule,
+    BpmnPropertiesProviderModule
+  ]
 });
-
-let log = console.log
-
 
 async function bpmn() {
   try {
-    const { warnings } = await modeler.importXML(xml)
-    modeler.get('canvas').zoom("fit-viewport");
-
-  } catch(err) {
-    console.log(err)
+    const { warnings } = await bpmnModeler.importXML(xml);
+    bpmnModeler.get("canvas").zoom("fit-viewport");
+    console.log("success !" + warnings);
+  } catch (err) {
+    console.log(err);
   }
 }
 

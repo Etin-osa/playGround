@@ -9,9 +9,9 @@
   },
   "dependencies": {
     "axios": "^0.26.0",
-    "bpmn-js": "8.7.2",
-    "bpmn-js-properties-panel": "0.44.1",
-    "camunda-bpmn-moddle": "6.1.2",
+    "@bpmn-io/properties-panel": "0.11.0",
+    "bpmn-js": "9.0.2",
+    "bpmn-js-properties-panel": "1.0.0-alpha.5",
     "jquery": "^3.6.0",
     "min-dash": "^3.8.1"
   },
