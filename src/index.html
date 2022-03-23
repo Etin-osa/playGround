@@ -1,41 +1,49 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bpmn js</title>
+  <meta charset="utf-8">
+  <title>bpmn-js properties panel demo</title>
 
-  <!-- required viewer styles -->
-  <!-- <link rel="stylesheet" href="https://unpkg.com/bpmn-js@9.0.2/dist/assets/bpmn-js.css" />
-
-  <script src="https://unpkg.com/bpmn-js@9.0.2/dist/bpmn-viewer.development.js"></script> -->
 </head>
 <body>
 
-  <h1>Bpmn-js</h1>
-
-  <div class="modeler">
-    <div id="app"></div>
-    <div id="app-panel"></div>
+  <div id="app">
+    <div class="canvas" id="js-canvas">
+      <div id="hint" class="panel">Click <b>right mouse button</b> to edit properties.</div>
+    </div>
+    <div class="properties-panel-parent" id="js-properties-panel"></div>
   </div>
-    
-  <button id="collect-xml">Get Xml Code</button>
 
+  <div id="quality-assurance" class="panel hidden">
+    <form id="form">
+      <p>
+        <b>Suitability Score</b>
+      </p>
+      <br />
+      <input id="suitability-score" type="text" placeholder="100" autocomplete="off">
+      <br />
+      <br />
+      <p id="warning" class="hidden">
+        Suitability Score must be a number
+      </p>
+      <br />
+      <p>
+        <b>Last Checked</b>
+      </p>
+      <br />
+      <p id="last-checked">
+        -
+      </p>
+      <br />
+      <input id="okay" type="submit" value="Okay">
+    </form>
+  </div>
 
-
-  <script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
-</body>
+  <ul class="buttons">
+    <li>
+      <button id="js-download-diagram" title="download BPMN diagram">
+        Get XML Diagram
+      </button>
+    </li>
+  </ul>
 </html>
-
-
-
-<!-- <div class="bpp-properties-entry bpp-textfield" data-entry="form-key">
-  <label for="camunda-form-key">Form Key</label>
-  <div class="bpp-field-wrapper">
-    <input id="camunda-form-key" type="text" name="formKey">
-    <button class="action-button clear bpp-hidden" data-action="clear" data-show="canClear">
-      <span>X</span>
-    </button>
-  </div>
-</div> -->
