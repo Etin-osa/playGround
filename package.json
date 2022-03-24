@@ -8,10 +8,12 @@
     "start:dev": "webpack-dev-server"
   },
   "dependencies": {
-    "axios": "^0.26.0",
     "@bpmn-io/properties-panel": "^0.11.0",
+    "axios": "^0.26.0",
+    "bpmn-i18n-moddle": "^0.2.0",
     "bpmn-js": "^9.0.3",
     "bpmn-js-properties-panel": "^1.0.0-alpha.5",
+    "camunda-bpmn-moddle": "^6.1.2",
     "jquery": "^3.5.1",
     "min-dash": "^3.7.0"
   },
